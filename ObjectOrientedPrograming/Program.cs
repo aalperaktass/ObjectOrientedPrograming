@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace ObjectOrientedPrograming
 {
@@ -10,20 +9,37 @@ namespace ObjectOrientedPrograming
         public string Renk { get; set; }
         public bool Otomatik { get; set; }
         public int Fiyat { get; set; }
+        public int Hız { get; set; }
+
 
         public void Start()
         {
             Console.WriteLine($"{this.Marka} {this.Model} Aracımız  Çalıştı");
         }
+
         public void Stop()
         {
             Console.WriteLine($"{this.Marka} {this.Model} Aracımız  Durdu");
         }
+
         public void Hızlan()
         {
             Console.WriteLine($"{this.Marka} {this.Model} Aracımız  Hızlandı");
 
         }
+
+        public void Hızlan(int km)
+        {
+            if (km > this.Hız)
+            {
+                Console.WriteLine($"Arac {this.Hız} km hızı aşamaz lütfen yavaşlayın.");
+            }
+            else
+                Console.WriteLine($"{this.Marka} {this.Model} Aracımız {km} km hıza ulaştı.");
+
+        }
+
+
         public void Yavasla()
         {
             Console.WriteLine($"{this.Marka} {this.Model} Aracımız Yavasladı");
@@ -32,6 +48,7 @@ namespace ObjectOrientedPrograming
         {
             Console.WriteLine("Menuden Çıkıldı");
         }
+
 
         public void Menu()
         {
@@ -46,17 +63,31 @@ namespace ObjectOrientedPrograming
                     case "1":
                         this.Start();
                         break;
+
                     case "2":
                         this.Stop();
                         break;
 
                     case "3":
-                        this.Hızlan();
+                        Console.WriteLine("Hız bilgisi girmek istiyor musunuz ? ( 'e' Evet )");
+                        var secim = Console.ReadLine();
+
+                        if (secim == "e")
+                        {
+                            Console.WriteLine("Lütfen Hız Girin");
+                            int km = int.Parse(Console.ReadLine());
+                            this.Hızlan(km);
+                        }
+                        else
+                        {
+                            this.Hızlan();
+                        }
                         break;
 
                     case "4":
                         this.Yavasla();
                         break;
+
                     case "C":
                         this.Cıkıs();
                         break;
@@ -83,12 +114,14 @@ namespace ObjectOrientedPrograming
             ford.Renk = "Beyaz";
             ford.Model = "Sedan";
             ford.Otomatik = true;
+            ford.Hız = 260;
 
             var bmw = new Araba();
             bmw.Marka = "Bmw";
             bmw.Renk = "Siyah";
             bmw.Model = "Hatchback";
             bmw.Otomatik = false;
+            bmw.Hız = 300;
 
             //ford.Menu();
             bmw.Menu();
