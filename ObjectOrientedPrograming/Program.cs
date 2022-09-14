@@ -4,13 +4,32 @@ namespace ObjectOrientedPrograming
 {
     class Araba
     {
+        public Araba()
+        {
+            this.Hız = 180;
+            Console.WriteLine("yapıcı metot çalıştırıldı.");
+        }
+        public Araba(int maxhiz)
+        {
+            this.Hız = maxhiz;
+        }
+
+        public Araba(string marka, string model, string renk, bool otomatik, int hız)
+        {
+            this.Marka = marka;
+            this.Model = model;
+            this.Renk = renk;
+            this.Otomatik = otomatik;
+            this.Hız = hız;
+        }
+
         public string Marka { get; set; }
         public string Model { get; set; }
         public string Renk { get; set; }
         public bool Otomatik { get; set; }
         public int Fiyat { get; set; }
         public int Hız { get; set; }
-
+  
 
         public void Start()
         {
@@ -109,22 +128,31 @@ namespace ObjectOrientedPrograming
     {
         static void Main(string[] args)
         {
-            Araba ford = new Araba();
-            ford.Marka = "Ford";
-            ford.Renk = "Beyaz";
-            ford.Model = "Sedan";
-            ford.Otomatik = true;
-            ford.Hız = 260;
+            Araba ford = new Araba(200);
+            Console.WriteLine(ford.Hız);
+            //ford.Marka = "Ford";
+            //ford.Renk = "Beyaz";
+            //ford.Model = "Sedan";
+            //ford.Otomatik = true;
+            //ford.Hız = 260;
 
-            var bmw = new Araba();
-            bmw.Marka = "Bmw";
-            bmw.Renk = "Siyah";
-            bmw.Model = "Hatchback";
-            bmw.Otomatik = false;
-            bmw.Hız = 300;
+            var bmw = new Araba("Bmw", "Hatchback", "Siyah", true, 300);
+
+            Console.WriteLine(bmw.Marka);
+            Console.WriteLine(bmw.Model);
+            Console.WriteLine(bmw.Renk);
+            Console.WriteLine(bmw.Otomatik);
+            Console.WriteLine(bmw.Hız);
+
+
+            //bmw.Marka = "Bmw";
+            //bmw.Renk = "Siyah";
+            //bmw.Model = "Hatchback";
+            //bmw.Otomatik = false;
+            //bmw.Hız = 300;
 
             //ford.Menu();
-            bmw.Menu();
+            //bmw.Menu();
         }
     }
 }
